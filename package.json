@@ -2,7 +2,7 @@
   "name": "page1",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://Gilad-Sterman.github.io/ptil-tekhelet",
+  "homepage": "https://Gilad-Sterman.github.io/herzog-doc-display",
   "type": "module",
   "scripts": {
     "dev": "vite",

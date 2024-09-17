@@ -1,0 +1,125 @@
+@keyframes page-flip-next {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+
+    50% {
+        transform: perspective(1000px) rotateY(-90deg) scaleX(0.95) scaleY(0.98);
+        clip-path: polygon(100% 100%, 0% 100%, 0.00% 96.67%, 2.00% 96.30%, 4.00% 95.20%, 6.00% 93.39%, 8.00% 90.89%, 10.00% 87.75%, 12.00% 84.02%, 14.00% 79.75%, 16.00% 75.01%, 18.00% 69.87%, 20.00% 64.42%, 22.00% 58.74%, 24.00% 52.93%, 26.00% 47.07%, 28.00% 41.26%, 30.00% 35.58%, 32.00% 30.13%, 34.00% 24.99%, 36.00% 20.25%, 38.00% 15.98%, 40.00% 12.25%, 42.00% 9.11%, 44.00% 6.61%, 46.00% 4.80%, 48.00% 3.70%, 50.00% 3.33%, 52.00% 3.70%, 54.00% 4.80%, 56.00% 6.61%, 58.00% 9.11%, 60.00% 12.25%, 62.00% 15.98%, 64.00% 20.25%, 66.00% 24.99%, 68.00% 30.13%, 70.00% 35.58%, 72.00% 41.26%, 74.00% 47.07%, 76.00% 52.93%, 78.00% 58.74%, 80.00% 64.42%, 82.00% 69.87%, 84.00% 75.01%, 86.00% 79.75%, 88.00% 84.02%, 90.00% 87.75%, 92.00% 90.89%, 94.00% 93.39%, 96.00% 95.20%, 98.00% 96.30%, 100.00% 96.67%);
+    }
+
+    100% {
+        transform: perspective(1000px) rotateY(-180deg) scaleX(1) scaleY(1);
+        clip-path: polygon(100% 100%, 0% 100%, 0.00% 96.67%, 2.00% 96.30%, 4.00% 95.20%, 6.00% 93.39%, 8.00% 90.89%, 10.00% 87.75%, 12.00% 84.02%, 14.00% 79.75%, 16.00% 75.01%, 18.00% 69.87%, 20.00% 64.42%, 22.00% 58.74%, 24.00% 52.93%, 26.00% 47.07%, 28.00% 41.26%, 30.00% 35.58%, 32.00% 30.13%, 34.00% 24.99%, 36.00% 20.25%, 38.00% 15.98%, 40.00% 12.25%, 42.00% 9.11%, 44.00% 6.61%, 46.00% 4.80%, 48.00% 3.70%, 50.00% 3.33%, 52.00% 3.70%, 54.00% 4.80%, 56.00% 6.61%, 58.00% 9.11%, 60.00% 12.25%, 62.00% 15.98%, 64.00% 20.25%, 66.00% 24.99%, 68.00% 30.13%, 70.00% 35.58%, 72.00% 41.26%, 74.00% 47.07%, 76.00% 52.93%, 78.00% 58.74%, 80.00% 64.42%, 82.00% 69.87%, 84.00% 75.01%, 86.00% 79.75%, 88.00% 84.02%, 90.00% 87.75%, 92.00% 90.89%, 94.00% 93.39%, 96.00% 95.20%, 98.00% 96.30%, 100.00% 96.67%);
+    }
+}
+
+@keyframes page-flip-prev {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+
+    50% {
+        transform: perspective(1000px) rotateY(90deg) scaleX(0.95) scaleY(0.98);
+    }
+
+    100% {
+        transform: perspective(1000px) rotateY(180deg) scaleX(1) scaleY(1);
+    }
+}
+
+.view-org {
+    direction: ltr;
+    margin-top: 80px;
+
+    .book {
+        position: relative;
+        width: max-content;
+        margin: auto;
+        display: flex;
+        border: 1px solid $clr-primary;
+        background-color: $clr-primary;
+        border-radius: .5rem;
+        padding: .25rem;
+        gap: .5rem;
+        z-index: -2;
+
+        .page {
+            width: 350px;
+            height: 480px;
+            backface-visibility: hidden;
+            transition: transform 1s ease, clip-path 1s ease;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+
+            &.flipping-next {
+                z-index: 1;
+                animation: page-flip-next 1s forwards;
+            }
+
+            &.flipping-prev {
+                z-index: 2;
+                animation: page-flip-prev 1s forwards;
+            }
+        }
+
+        .left.page {
+            transform-origin: right;
+
+            &.place-holder {
+                position: absolute;
+                left: 0;
+            }
+        }
+
+        .right.page {
+            transform-origin: left;
+            z-index: 0;
+
+            &.place-holder {
+                position: absolute;
+                right: 0;
+                z-index: -1;
+            }
+        }
+
+        &.closed {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            padding: 0;
+        }
+    }
+
+    .btn {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        background-color: $clr-primary-1;
+        bottom: 0;
+        padding: .5rem;
+
+        img {
+            width: 12px;
+            height: 12px;
+            filter: $clr-primary1-img-filter;
+        }
+
+        &.prev {
+            left: .25rem;
+
+            img {
+                transform: rotate(-180deg);
+            }
+        }
+
+        &.next {
+            right: .25rem;
+        }
+
+        &:hover {
+            background-color: $clr-primary-light;
+        }
+    }
+}

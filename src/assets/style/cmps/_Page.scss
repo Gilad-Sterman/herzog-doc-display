@@ -1,0 +1,185 @@
+@keyframes highlightAnimation {
+    0% {
+        background-size: 0 100%; // Start with no background highlight
+    }
+
+    100% {
+        background-size: 100% 100%; // End with the full background highlighted
+    }
+}
+
+.page {
+    padding: .5rem;
+    background-color: $clr-white;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        .line {
+            background-color: $clr-primary;
+            width: 100%;
+            height: 1px;
+            border-radius: 5rem;
+        }
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h5 {
+        font-size: 1rem;
+        margin-bottom: .25rem;
+        display: inline-block;
+        background: linear-gradient(to right, yellow 100%, transparent 0); // Yellow highlight background
+        background-size: 0 100%; // Start with no visible background
+        background-repeat: no-repeat;
+        padding: 0.2em;
+        animation: highlightAnimation 2s ease forwards; // The animation will start on page load
+        animation-delay: 0.5s;
+    }
+
+    p {
+        font-size: .75rem;
+        line-height: 1rem;
+        margin-bottom: 0;
+    }
+
+    ul {
+        margin-block: .25rem;
+    }
+
+    li {
+        font-size: .75rem;
+        line-height: 1rem;
+        display: inline-block;
+        background: linear-gradient(to right, $clr-bg-light 100%, transparent 0); // Yellow highlight background
+        background-size: 0 100%; // Start with no visible background
+        background-repeat: no-repeat;
+        padding: 0.2em;
+        animation: highlightAnimation 3s ease forwards; // The animation will start on page load
+        animation-delay: 2s;
+    }
+
+    .trans {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: start;
+        gap: .5rem;
+        border: 1px solid $clr-dark;
+        border-radius: .25rem;
+        padding: .25rem;
+        margin-block: .25rem;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .triple-trans {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        text-align: start;
+        gap: .5rem;
+        border: 1px solid $clr-dark;
+        border-radius: .25rem;
+        padding: .25rem;
+        margin-block: .25rem;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .foot-note {
+        position: relative;
+        display: inline;
+        color: $clr-primary-2;
+        padding-inline-end: .75rem;
+        font-size: .8rem;
+
+        .foot-note-num {
+            position: absolute;
+            top: -.75rem;
+            padding-inline: .25rem;
+        }
+
+        .foot-note-txt {
+            display: none;
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translate(-50%, 0);
+            border: 1px solid $clr-primary-2;
+            border-radius: .25rem;
+            padding: .5rem;
+            background-color: $clr-white;
+            min-width: 20vw;
+            max-width: 350px;
+            text-align: start;
+            z-index: 5;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+                rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
+                rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            .foot-note-txt {
+                // display: flex;
+                display: block;
+                // width: max-content;
+            }
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        hr {
+            width: 100%;
+        }
+    }
+
+    .foot-notes {
+        margin-top: 2rem;
+
+        a {
+            color: $clr-primary-2;
+        }
+
+        li {
+            line-height: 1.5rem;
+            align-items: start;
+            gap: .5rem;
+            margin-bottom: .25rem;
+
+            .num {
+                color: $clr-primary-2;
+                width: 1rem;
+                padding-inline-end: .5rem;
+            }
+        }
+
+        .br {
+            margin-block: 1rem;
+        }
+    }
+
+    .page-info {
+        display: flex;
+        gap: .25rem;
+        height: 30px;
+        padding-top: 1rem;
+        border-top: 1px solid $clr-dark;
+    }
+}

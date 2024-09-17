@@ -1,0 +1,40 @@
+.home {
+    direction: ltr;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .book {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $clr-primary;
+        border-radius: .5rem;
+        padding: .5rem;
+        width: 850px;
+        margin: auto;
+        margin-top: 1rem;
+
+        .cover {
+            background-color: $clr-white;
+            text-align: center;
+
+            img {
+                padding: 1rem;
+                border-radius: .5rem;
+            }
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            p {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+}

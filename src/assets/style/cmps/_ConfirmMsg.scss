@@ -1,0 +1,37 @@
+.confirm-msg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border-radius: .5rem;
+    z-index: 3;
+    background-color: $clr-primary-1;
+
+    h4 {
+        font-size: 2rem;
+        color: $clr-bg-light;
+    }
+
+    pre {
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: start;
+        color: $clr-bg-light;
+    }
+
+    .btns {
+        display: flex;
+        gap: 1rem;
+
+        .btn-confirm {
+            background-color: $clr-bg-light;
+            color: $clr-primary;
+        }
+    }
+
+    &.add {
+        max-width: 80vw;
+    }
+
+}
